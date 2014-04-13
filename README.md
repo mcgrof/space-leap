@@ -50,6 +50,26 @@ Python bindings
 
 https://developer.leapmotion.com/documentation/python/index.html
 
+Javasript bindings
+==================
+
+https://developer.leapmotion.com/documentation/javascript/index.html
+
+3D library aka three.js
+=======================
+
+http://threejs.org/docs
+
+Hacking with leap
+=================
+
+All your work leap work must go under Leap.loop(), the unlderying 3D
+rendering is provided by three.js. The 3D environment three.js requires you
+to implement a render loop and in it you'd stuff all your code. For a leap
+environemnt you want to stay under the Leap.loop() and at the end call
+the renderer render(scene, camera). Each loop entry is restricted by the
+3D loop environment which by default which be triggered 60 times per second.
+
 Objectives
 =========
 

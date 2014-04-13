@@ -1,6 +1,7 @@
 <html>
   <head>
     <title>Asteroid Avoid</title>
+	<link rel="stylesheet" href="sun.css" />
     <script src="lib/leap.js"></script>
 	<script src="lib/three.min.js"></script>
     <!-- <script src="LeapControls.js"></script> -->
@@ -11,12 +12,43 @@
   </head>
   
   <body onload="checkLibrary()">
+	
 
     <script>
-      var scene = new THREE.Scene();
+     
+ 	 var scene = new THREE.Scene();
       var renderer = new THREE.WebGLRenderer();
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
+      
+	  var geometry = new THREE.SphereGeometry( 30, 32, 32 );
+	  var material = new THREE.MeshBasicMaterial( {color: 0xFFCC00} );
+	  var sun = new THREE.Mesh( geometry, material );
+	  scene.add( sun );
+
+	  var geometry = new THREE.SphereGeometry( 60, 40, 40 );
+	  var material = new THREE.MeshBasicMaterial( {color: 0x99B2CC} );
+	  var mercury = new THREE.Mesh( geometry, material );
+	  mercury.position.x = sun.position.x + 100;
+	  scene.add( mercury );
+
+	  var geometry = new THREE.SphereGeometry( 15, 32, 32 );
+	  var material = new THREE.MeshBasicMaterial( {color: 0xFFCC00} );
+	  var venus = new THREE.Mesh( geometry, material );
+	  venus.position.x = mercury.position.x + 50;
+	  scene.add( venus );
+	  
+	  var geometry = new THREE.SphereGeometry( 20, 32, 32 );
+	  var material = new THREE.MeshBasicMaterial( {color: 0xFFCC00} );
+	  var earth = new THREE.Mesh( geometry, material );
+	  earth.position.x = venus.position.x + 50;
+	  scene.add( earth );
+	  
+	  var geometry = new THREE.SphereGeometry( 18, 32, 32 );
+	  var material = new THREE.MeshBasicMaterial( {color: 0xFFCC00} );
+	  var saturn = new THREE.Mesh( geometry, material );
+	  saturn.position.x = earth.position.x + 50;
+	  scene.add( saturn );
 
       var geometry = new THREE.CubeGeometry( 20, 20, 20 );
      
@@ -57,9 +89,9 @@
             }
           } else if (state == 'moving') {
             var t = startFrame.translation(frame);
-            camera.position.x = t[0] * 10 + startX;
-            camera.position.y = t[1] * 10 + startY;
-            camera.position.z = t[2] * 10 + startZ;
+            camera.position.x = t[0]  + startX;
+            camera.position.y = t[1]  + startY;
+            camera.position.z = t[2]  + startZ;
             cube.rotation.x += .1;
 			if (frame.hands.length == 1 || frame.pointables.legnth > 1) {
               state = null;

@@ -1,19 +1,29 @@
-<html>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
-    <title>Asteroid Avoid</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Asteroid Avoid</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="sun.css" />
-    <script src="lib/leap.js"></script>
+
+	<script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+	<script src="lib/leap.js"></script>
 	<script src="lib/three.min.js"></script>
-    <!-- <script src="LeapControls.js"></script> -->
-	<script>// JavaScript code goes here
-	
-	
-	</script>
+	<!-- <script src="LeapControls.js"></script> -->
   </head>
   
   <body onload="checkLibrary()">
-	
-
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
     <script>
      
  	 var scene = new THREE.Scene();
@@ -108,21 +118,23 @@
         renderer.render(scene, camera);
       });
 	</script>
+        <div class="footer-container">
+            <footer class="wrapper">
+		<h3 id="license"><a href="https://github.com/mcgrof/space-leap">space-leap</a> - licensed under the <a href="http://www.gnu.org/licenses/agpl-3.0.html">AGPL</a></h3>
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="js/main.js"></script>
+            </footer>
 <!--
-  <h1>Asteroid Avoid</h1>
-    <div id="main">
-      <h3>Frame data:</h3>
-      <div id="frameData"></div>
-      <div style="clear:both;"></div>
-      <h3>Hand data:</h3>
-      <div id="handData"></div>
-      <div style="clear:both;"></div>
-      <h3>Finger and tool data:</h3>
-      <div id="pointableData"></div>
-      <div style="clear:both;"></div>
-      <h3>Gesture data:</h3>
-      <div id="gestureData"></div>
-    </div>
-	-->
+	XXX: add support for google analytics
+-->
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
   </body>
 </html>

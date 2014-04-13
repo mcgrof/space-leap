@@ -6,18 +6,16 @@
   <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Asteroid Avoid</title>
+		<title>Asteroid Avoid</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="sun.css" />
-
-	<script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
-	<script src="lib/leap.js"></script>
-	<script src="lib/three.min.js"></script>
-	<!-- <script src="LeapControls.js"></script> -->
+		
+		<script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+		<script src="lib/leap.js"></script>
+		<script src="lib/three.min.js"></script>
   </head>
   
   <body onload="checkLibrary()">
@@ -25,8 +23,11 @@
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
     <script>
-     
- 	 var scene = new THREE.Scene();
+      //adding functionality for swiping
+	  var ctl = new Leap.Controller({enableGestures: true});
+      //var swiper = ctl.gesture('swipe');
+ 	  
+	  var scene = new THREE.Scene();
       var renderer = new THREE.WebGLRenderer();
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
@@ -76,10 +77,26 @@
       var state  = null;
       var startFrame = null;
 
-      Leap.loop(function(frame) {
+
+	  /*
+	  var tolerance = 50;
+	  swiper.update(function(g) {
+      if (Math.abs(g.translation()[0]) > tolerance || Math.abs(g.translation()[1]) > tolerance) {
+        var xDir = Math.abs(g.translation()[0]) > tolerance ? (g.translation()[0] > 0 ? -1 : 1) : 0;
+        var yDir = Math.abs(g.translation()[1]) > tolerance ? (g.translation()[1] < 0 ? -1 : 1) : 0;
+        // slider(xDir, yDir);
+      }
+	  */
+	  
+      Leap.loop(ctl, function(frame) {
         if (frame.valid) {
           if (state == null) {
-            if (frame.hands.length > 0 && frame.pointables.length <= 1) {
+	
+			//var g = frame.gestures;
+			
+			
+			
+			if (frame.hands.length > 0 && frame.pointables.length <= 1) {
               startFrame = frame;
               startX = camera.position.x;
               startY = camera.position.y;
@@ -87,7 +104,8 @@
               state = 'moving';
             }
           } else if (state == 'moving') {
-            var t = startFrame.translation(frame);
+ 
+			var t = startFrame.translation(frame);
             camera.position.x = t[0]  + startX;
             camera.position.y = t[1]  + startY;
             camera.position.z = t[2]  + startZ;
@@ -101,18 +119,6 @@
       });
 	</script>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
-        <script src="js/main.js"></script>
-            </footer>
-<!--
-	XXX: add support for google analytics
--->
-        <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
+        
   </body>
 </html>

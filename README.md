@@ -70,6 +70,21 @@ environemnt you want to stay under the Leap.loop() and at the end call
 the renderer render(scene, camera). Each loop entry is restricted by the
 3D loop environment which by default which be triggered 60 times per second.
 
+Within the leap loop we get information from the device 60 times / second,
+the information is pegged onto a frame. three.js provides the camera size
+through THREE.PerspectiveCamera(), the last arguments defin the "near" and
+"far", which tell three.js the limits at which to not render objects for us.
+The resolution for the leap device is milimeters and the events obtained
+through thea Leap.loop() should give us information of a change of an object
+(hand, finger) within this resolution. If we want to be precise about distances
+we must map the change in motion provided by leap onto the 3D space.
+
+For now we simplify things by focusing on on two viewing spaces, a long view
+and close up view. The long view will enable you to swiftly move between
+orbits for now only for 5 planets, and 5 asteroids. Once you are focused on
+an object you can enter another viewing mode which lets you rotate around the
+object and we display information about it.
+
 Objectives
 =========
 

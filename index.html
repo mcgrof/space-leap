@@ -18,16 +18,29 @@
 		<!-- <script src="lib/leap.min.js"></script> --> <!-- Robbie's version !-->
 		<script src="lib/3d-planets.js"></script>
 		<script src="lib/stars.js"></script>
+		<script src="lib/debug.js"></script>
   </head>
   
   <body onload="checkLibrary()">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
+    <!-- Consider this our little debug console for now -->
+    <div id="about"><a href="https://2014.spaceappschallenge.org/project/halleys-hitchhikers/">Halley's Hitchhikers'</a> - <a href="https://github.com/mcgrof/space-leap">Space Leap</a></div>
+
+    <div id="js_emerg"></div>
+    <div id="js_alert">Alert:&nbsp;</div>
+    <div id="js_crit"></div>
+    <div id="js_err"></div>
+    <div id="js_warning"></div>
+    <div id="js_notice">Gestures:&nbsp;</div>
+    <div id="js_info"></div>
+    <div id="js_debug">Debug:&nbsp;</div>
     <script>
-      //adding functionality for swiping
-	  // Setup Leap loop with frame callback function
 	THREE.ImageUtils.crossOrgin = "anonymous";
+
+	/* when we're ready this will go to true */
+	var production = false;
 
  	var controllerOptions = {enableGestures: true};
  	var paused = false;
@@ -40,6 +53,9 @@
 	var mars;
 	var jupiter;
 	
+	if (!production)
+		pr_enable();
+
       var scene = new THREE.Scene();
       scene.fog = new THREE.FogExp2( 0x010140, 0.0009 );
       var renderer = new THREE.WebGLRenderer();

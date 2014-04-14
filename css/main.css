@@ -13,6 +13,8 @@ textarea {
 body {
     font-size: 1em;
     line-height: 1.4;
+    background-color: black;
+    layer-background-color: black;
 }
 
 canvas { width: 100%; height: 100%; background-color: black; }
@@ -159,19 +161,91 @@ nav a:hover {
    Author's custom styles
    ========================================================================== */
 
+#about
+* {
+	color: white;
+	font-size: 2em;
+	background-color: black;
+	layer-background-color: black;
+	text-align: center;
 
+	.link
+	{
+		color:red;
+		text-decoration: none;
+		background-color: black;
+	}
+}
 
+a,
+a:visited {
+	text-decoration: underline;
+	text-align: center;
+}
 
+#js_emerg
+{
+	color: red;
+	background-color: black;
+	layer-background-color: black;
+	visibility:hidden;
+}
 
+#js_alert
+{
+	color: red;
+	background-color: black;
+	layer-background-color: black;
+	visibility:hidden;
+}
 
+#js_crit
+{
+	color: red;
+	background-color: black;
+	layer-background-color: black;
+	visibility:hidden;
+}
 
+#js_err
+{
+	color: red;
+	background-color: black;
+	layer-background-color: black;
+	visibility:hidden;
+}
 
+#js_warning
+{
+	color: white;
+	background-color: black;
+	layer-background-color: black;
+	visibility:hidden;
+}
 
+#js_notice
+{
+	color: white;
+	background-color: black;
+	layer-background-color: black;
+	visibility:hidden;
+}
 
+#js_info
+{
+	color: cyan;
+	background-color: black;
+	layer-background-color: black;
+	visibility:hidden;
+}
 
-
-
-
+#js_debug
+{
+	color: cyan;
+	background-color: black;
+	layer-background-color: black;
+	visibility:hidden;
+}
 
 /* ==========================================================================
    Media Queries

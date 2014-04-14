@@ -186,6 +186,9 @@
 			}
 		}
 	}
+
+	camera.updateProjectionMatrix();
+	camera.lookAt(scene.position)
 	renderer.render(scene, camera);
 	} else {
 		pr_debug("Scene 2");

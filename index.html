@@ -104,7 +104,7 @@
 	camera.lookAt( scene.position )
 	camera.position.set( 0, 0, 290 )
 
-      	window.focus = new focus_star(scene, "img/earthBumpMap.jpg", "img/earth-clouds-bw-3600x1800.jpg");
+	window.focus = new focus_star(scene_zoom, "img/earthBumpMap.jpg", "img/earth-clouds-bw-3600x1800.jpg");
 
 	Leap.loop(controllerOptions, function(frame) {
 	/*
@@ -125,7 +125,7 @@
 						case "circle":
 							if (items > 10 && firstRestart){
 								firstRestart = false;
-								focus.redo(scene);
+								focus.redo(scene_zoom);
 								pr_alert("yay!");
 								scene1 = false;
 							}
